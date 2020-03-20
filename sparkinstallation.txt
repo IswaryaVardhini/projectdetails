@@ -1,0 +1,22 @@
+
+PATH=/home/hadoop/spark/bin:$PATH
+$SPARK_HOME =/home/hadoop/spark
+export HADOOP_CONF_DIR=/etc/hadoop
+export SPARK_HOME=/home/hadoop/spark
+export LD_LIBRARY_PATH=/usr/lib/hadoop/lib/native:$LD_LIBRARY_PATH
+export YARN_CONF_DIR=/etc/hadoop
+
+rename spark default template c
+rename spark-env.sh.template
+
+test
+
+/home/hadoop/spark/bin/spark-submit --deploy-mode cluster --class org.apache.spark.examples.SparkPi /home/hadoop/spark/examples/jars/spark-examples_2.11-2.4.3.jar 10
+
+
+
+spark-submit --deploy-mode client \
+               --class org.apache.spark.examples.SparkPi \
+               /home/hadoop/spark/examples/jars/spark-examples_2.11-2.4.3.jar 10
+
+/home/hadoop/spark/bin
